@@ -7,6 +7,9 @@ namespace _10_02
 		static void Main(string[] args)
 		{
 			bool continueBool = true;
+			Random rng = new Random();
+
+			// Create the list of fortune strings.
 			List<string> fortunesList = new List<string>()
 			{
 				"You will find unexpected joy today.",
@@ -33,15 +36,13 @@ namespace _10_02
 
 			Console.WriteLine("Press any key for a new fortune or press ESC to exit.");
 
+			// Continue giving fortunes until the user exits the program.
 			while (continueBool)
 			{
-				Random rng = new Random();
-				int fortuneNumber = rng.Next(0, fortunesList.Count);
-
 				Console.SetCursorPosition(0, 1);
 				Console.Write("                                                          ");
 				Console.SetCursorPosition(0, 1);
-				Console.Write(fortunesList[fortuneNumber]);
+				Console.Write(fortunesList[rng.Next(0, fortunesList.Count)]);
 
 				var keyInfo = Console.ReadKey(intercept: true);
 
